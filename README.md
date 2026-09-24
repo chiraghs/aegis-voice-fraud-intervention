@@ -20,6 +20,38 @@ When retail banking fraud engines (Falcon, FICO, NetGuardians) detect unauthoriz
 
 ---
 
+## 📸 Live UI & System Screenshots
+
+### 1. Live SOC Intervention Console & Customer Handset Simulator (Light Mode — Default)
+> *Shows real-time Falcon/FICO risk signals, institutional KPI cards (cross-checked against Box D & M), interactive voice call cockpit, and the virtual smartphone simulator.*
+
+![Live SOC Intervention Console & Smartphone Simulator](docs/screenshots/01-soc-console-light.jpeg)
+
+---
+
+### 2. CBUAE & ElevenLabs Compliance Guardrails (Box K)
+> *Deterministic technical enforcement mechanisms for AI disclosure, outbound opt-in check, zero-secret challenge, opt-out branch callback, and human underwriter handover `(H)`. Includes a continuous regression test runner with a **98.4% pass rate** over 150 simulated runs.*
+
+| Light Mode (Default) | Dark Mode |
+| :---: | :---: |
+| ![Guardrails Suite Light](docs/screenshots/03-guardrails-suite-light.jpeg) | ![Guardrails Suite Dark](docs/screenshots/04-guardrails-suite-dark.jpeg) |
+
+---
+
+### 3. 3-Zone Technical Architecture Diagram (Box L)
+> *Complete end-to-end data flow mapping across Zone 1 (Caller & Channel), Zone 2 (ElevenLabs Engine), and Zone 3 (Bank Core Systems) with PII tokenization boundaries `[●]` and circuit-breaker auto-failover.*
+
+![3-Zone Technical Architecture](docs/screenshots/02-architecture-box-l-arabic.jpeg)
+
+---
+
+### 4. Bilingual Dialect & Dark Mode Operations Console
+> *Native support for conversational Emirati Arabic and UAE English with real-time synchronized bilingual transcription and dynamic theme switching.*
+
+![Dark Mode Bilingual Console](docs/screenshots/05-soc-console-dark-arabic.jpeg)
+
+---
+
 ## 🏛️ Regulatory & Architectural Highlights (Canvas Compliance)
 
 | Box | Criterion | Design Specification |
@@ -78,25 +110,31 @@ Open [http://localhost:3005](http://localhost:3005) in your browser.
 
 ```
 aegis-voice-fraud-intervention/
+├── docs/
+│   ├── ElevenLabs_Idea_Canvas_Track1_Fraud_Intervention_SUBMISSION.docx  # Completed canvas
+│   └── screenshots/            # Clean screenshot assets for documentation
+├── SCREENSHOTS/                # Original high-res UI captures
+├── scripts/
+│   └── populate_canvas.py      # Automated script for regenerating official canvas document
 ├── src/
 │   ├── app/
-│   │   ├── globals.css         # Dubai DIFC banking theme, glassmorphism & waveform styling
-│   │   ├── layout.tsx          # Root layout with meta tags
+│   │   ├── globals.css         # Dubai banking theme, light/dark mode & waveform styling
+│   │   ├── layout.tsx          # Root layout with ThemeProvider
 │   │   └── page.tsx            # Main SOC command center, call cockpit & simulator
 │   ├── components/
 │   │   ├── ArchitectureView.tsx# Box L 3-zone technical architecture diagram
 │   │   ├── CallCockpit.tsx     # Active call stepper & bilingual synchronized transcript
 │   │   ├── FraudFeed.tsx       # Real-time Falcon/FICO risk alert stream
 │   │   ├── GuardrailsView.tsx  # Box K CBUAE guardrails & test regression runner
-│   │   ├── Header.tsx          # Institutional header with language switcher & ElevenLabs key modal
+│   │   ├── Header.tsx          # Header with theme toggle, language switcher & API key modal
 │   │   ├── Icons.tsx           # Custom banking & voice SVG icon library
 │   │   ├── KPICards.tsx        # Institutional metrics cross-checked against Box D & M
-│   │   └── PhoneSimulator.tsx  # Customer mobile phone simulation (push auth & card state)
+│   │   ├── PhoneSimulator.tsx  # Customer mobile phone simulation (push auth & card state)
+│   │   └── ThemeProvider.tsx   # Light/Dark theme provider with local storage persistence
 │   └── lib/
 │       ├── elevenLabsService.ts# ElevenLabs v3 TTS, Scribe v2 STT biasing & audio fallback
 │       ├── fraudStore.ts       # Realistic UAE fraud incident data & call state machine
 │       └── types.ts            # TypeScript definitions for alerts, sessions & guardrails
-├── public/                     # Static assets
 ├── package.json
 └── tsconfig.json
 ```
