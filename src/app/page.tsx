@@ -253,7 +253,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070b14] text-slate-100 flex flex-col">
+    <div className="min-h-screen app-mesh text-ink flex flex-col transition-colors">
       
       {/* Header */}
       <Header
@@ -270,13 +270,13 @@ export default function Home() {
         <KPICards language={language} />
 
         {/* View Navigation Tabs */}
-        <div className="flex items-center gap-2 mb-6 border-b border-white/10 pb-2">
+        <div className="flex items-center gap-2 mb-6 border-b border-hairline pb-3">
           <button
             onClick={() => setActiveTab('console')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
               activeTab === 'console'
-                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30'
-                : 'text-slate-400 hover:text-white bg-slate-900/60'
+                ? 'bg-brand text-white shadow-brand/20'
+                : 'text-ink-secondary hover:text-ink bg-surface-1 border border-hairline hover:border-brand/40'
             }`}
           >
             {language === 'ar' ? 'غرفة العمليات والمحاكاة الحية' : 'Live SOC Intervention Console'}
@@ -284,10 +284,10 @@ export default function Home() {
           
           <button
             onClick={() => setActiveTab('guardrails')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
               activeTab === 'guardrails'
-                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30'
-                : 'text-slate-400 hover:text-white bg-slate-900/60'
+                ? 'bg-brand text-white shadow-brand/20'
+                : 'text-ink-secondary hover:text-ink bg-surface-1 border border-hairline hover:border-brand/40'
             }`}
           >
             {language === 'ar' ? 'الضوابط الرقابية (Box K)' : 'CBUAE Guardrails Suite (Box K)'}
@@ -295,10 +295,10 @@ export default function Home() {
 
           <button
             onClick={() => setActiveTab('architecture')}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold transition ${
+            className={`px-4 py-2 rounded-xl text-xs font-bold transition shadow-sm ${
               activeTab === 'architecture'
-                ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-600/30'
-                : 'text-slate-400 hover:text-white bg-slate-900/60'
+                ? 'bg-brand text-white shadow-brand/20'
+                : 'text-ink-secondary hover:text-ink bg-surface-1 border border-hairline hover:border-brand/40'
             }`}
           >
             {language === 'ar' ? 'البنية التقنية (Box L)' : 'Architecture & 3 Zones (Box L)'}
@@ -370,7 +370,7 @@ export default function Home() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-white/5 py-4 px-6 text-center text-xs text-slate-500">
+      <footer className="border-t border-hairline py-4 px-6 text-center text-xs text-ink-muted">
         AegisVoice AI • Built for ElevenLabs × Ignyte Future of Voice AI Challenge • DIFC / CBUAE Consumer Protection Regulated
       </footer>
     </div>

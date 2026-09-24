@@ -1,73 +1,156 @@
 @import "tailwindcss";
 
-@layer base {
-  :root {
-    --bg-main: #070b14;
-    --bg-surface-1: #0d1526;
-    --bg-surface-2: #132038;
-    --bg-surface-3: #1a2c4c;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    --brand-emerald: #10b981;
-    --brand-crimson: #f43f5e;
-    --brand-amber: #f59e0b;
-    --brand-cyan: #06b6d4;
-    --border-hairline: rgba(255, 255, 255, 0.08);
-    --border-accent: rgba(16, 185, 129, 0.25);
-  }
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ============================================================
+   AEGISVOICE AI DESIGN SYSTEM (from Alpha-Fin)
+   Observatory Green #00836C · Orange Passion #F58220
+   Default: LIGHT MODE with full DARK MODE support
+   ============================================================ */
+:root {
+  /* surfaces */
+  --page: #f2f6f4;
+  --surface-1: #ffffff;
+  --surface-2: #f2f6f4;
+  --surface-3: #e4ece9;
+  --glass: rgba(255, 255, 255, 0.75);
+
+  /* ink */
+  --ink-primary: #0a1f1a;
+  --ink-secondary: #46584f;
+  --ink-muted: #7d8d86;
+
+  /* brand */
+  --brand-green: #00836c;
+  --brand-green-strong: #00594a;
+  --brand-green-soft: #d8efe8;
+  --brand-orange: #f58220;
+  --brand-orange-strong: #c95f04;
+  --brand-orange-soft: #fdecd9;
+  --brand-gradient: linear-gradient(135deg, #00594a 0%, #00836c 55%, #00a184 100%);
+  --hero-gradient: linear-gradient(120deg, #013d33 0%, #00594a 35%, #00836c 75%, #019a7e 100%);
+
+  /* status */
+  --status-good: #0ca30c;
+  --status-good-text: #067806;
+  --status-warning: #b97d00;
+  --status-serious: #c05621;
+  --status-critical: #d03b3b;
+
+  /* chrome */
+  --hairline: rgba(10, 31, 26, 0.09);
+  --grid: #dfe7e3;
+  --shadow-card: 0 1px 2px rgba(10, 31, 26, 0.04), 0 12px 32px -16px rgba(10, 31, 26, 0.14);
+  --shadow-pop: 0 24px 60px -24px rgba(1, 61, 51, 0.35);
+  --ring: rgba(0, 131, 108, 0.35);
+}
+
+.dark {
+  /* surfaces */
+  --page: #06100d;
+  --surface-1: #0d1a16;
+  --surface-2: #12211c;
+  --surface-3: #1a2c26;
+  --glass: rgba(13, 26, 22, 0.72);
+
+  /* ink */
+  --ink-primary: #eef5f2;
+  --ink-secondary: #a8bab2;
+  --ink-muted: #6f817a;
+
+  /* brand */
+  --brand-green: #1da98c;
+  --brand-green-strong: #3ecdae;
+  --brand-green-soft: #10322a;
+  --brand-orange: #f58220;
+  --brand-orange-strong: #ffa14e;
+  --brand-orange-soft: #33210f;
+  --brand-gradient: linear-gradient(135deg, #0b5a4a 0%, #12866e 55%, #1da98c 100%);
+  --hero-gradient: linear-gradient(120deg, #04241d 0%, #0a4237 40%, #0f6351 75%, #14806a 100%);
+
+  /* status */
+  --status-good: #0ca30c;
+  --status-good-text: #35c035;
+  --status-warning: #fab219;
+  --status-serious: #ec835a;
+  --status-critical: #e05252;
+
+  /* chrome */
+  --hairline: rgba(255, 255, 255, 0.09);
+  --grid: #22332d;
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.5), 0 14px 36px -18px rgba(0, 0, 0, 0.65);
+  --shadow-pop: 0 24px 70px -24px rgba(0, 0, 0, 0.8);
+  --ring: rgba(29, 169, 140, 0.4);
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface-1: var(--surface-1);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-ink: var(--ink-primary);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-brand: var(--brand-green);
+  --color-brand-strong: var(--brand-green-strong);
+  --color-brand-soft: var(--brand-green-soft);
+  --color-accent: var(--brand-orange);
+  --color-accent-strong: var(--brand-orange-strong);
+  --color-accent-soft: var(--brand-orange-soft);
+  --color-good: var(--status-good);
+  --color-good-text: var(--status-good-text);
+  --color-warning: var(--status-warning);
+  --color-serious: var(--status-serious);
+  --color-critical: var(--status-critical);
+  --color-hairline: var(--hairline);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--bg-main);
-  color: var(--text-primary);
+  background: var(--page);
+  color: var(--ink-primary);
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Glassmorphism card styles */
-.glass-panel {
-  background: rgba(13, 21, 38, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* soft brand mesh background from Alpha-Fin */
+.app-mesh {
+  background:
+    radial-gradient(60rem 32rem at 110% -10%, color-mix(in srgb, var(--brand-green) 9%, transparent), transparent 60%),
+    radial-gradient(50rem 30rem at -15% 108%, color-mix(in srgb, var(--brand-orange) 7%, transparent), transparent 55%),
+    var(--page);
 }
 
-.glass-panel-glow {
-  background: rgba(13, 21, 38, 0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(16, 185, 129, 0.25);
-  box-shadow: 0 0 25px -5px rgba(16, 185, 129, 0.15);
+/* ---------- primitives ---------- */
+.card {
+  background: var(--surface-1);
+  border: 1px solid var(--hairline);
+  border-radius: 20px;
+  box-shadow: var(--shadow-card);
 }
 
-.glass-panel-danger {
-  background: rgba(244, 63, 94, 0.04);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(244, 63, 94, 0.25);
-  box-shadow: 0 0 25px -5px rgba(244, 63, 94, 0.15);
+.glass {
+  background: var(--glass);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--hairline);
 }
 
-/* Custom scrollbars */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+.lift {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
-::-webkit-scrollbar-track {
-  background: rgba(7, 11, 20, 0.6);
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
+.lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-pop);
 }
 
 /* Audio waveform animated bars */
 @keyframes soundwave {
-  0%, 100% { height: 6px; }
-  50% { height: 28px; }
+  0%, 100% { height: 4px; }
+  50% { height: 24px; }
 }
 
 .waveform-bar {
